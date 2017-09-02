@@ -1,11 +1,11 @@
 {
-  "name": "blitz-js",
-  "version": "0.3.0",
-  "description": "⚡ Ultra Modular Nodejs Framework",
+  "name": "blitz-js-loader",
+  "version": "0.4.0",
+  "description": "Module loader for the blitz-js framework",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nexus-devs/blitz.js"
+    "url": "https://github.com/nexus-devs/blitz-js-loader"
   },
   "scripts": {
     "start": "node ./index.js"
