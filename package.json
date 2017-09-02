@@ -1,0 +1,25 @@
+{
+  "name": "blitz-js",
+  "version": "0.3.0",
+  "description": "⚡ Ultra Modular Nodejs Framework",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexus-devs/blitz.js"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcrypt-as-promised": "^1.1.0",
+    "chalk": "^2.1.0",
+    "circular-json": "^0.3.3",
+    "keypair": "^1.0.1",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.31",
+    "rand-token": "^0.3.0"
+  }
+}
