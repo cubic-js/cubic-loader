@@ -1,7 +1,5 @@
 # blitz-js-loader
 
-##
-
 <br>
 
 ## Example
