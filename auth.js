@@ -124,15 +124,14 @@ class Auth {
         user_secret_auto,
         user_id: id,
         last_ip: [],
-        scope: 'root_write',
+        scope: 'write_root',
         refresh_token: user_key + randtoken.uid(256)
       }
       db.collection('users').insertOne(user)
       console.log(`
 :: ${chalk.yellow(`Auto-generated root credentials for your ${id} node. Make sure to save these credentials if you plan to deploy on multiple servers.`)}
-
 user_key: ${user_key}
-
+-
 user_secret: ${user_secret}
 `)
     }
