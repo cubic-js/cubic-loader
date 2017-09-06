@@ -53,6 +53,7 @@ class Auth {
 
       // Save keys so we can use them next time
       try {
+        await mkdir(`${process.cwd()}/config/`)
         await mkdir(certDir)
       } catch (err) {}
       await writeFile(`${certDir}/auth.public.pem`, this.certPublic)
