@@ -27,7 +27,7 @@ class Blitz {
       provided: options
     }
 
-    if (config.environment === 'production') {
+    if (config.provided.environment === 'production') {
       process.env.NODE_ENV = 'production'
     }
 
