@@ -27,6 +27,10 @@ class Blitz {
       provided: options
     }
 
+    if (config.environment === 'production') {
+      process.env.NODE_ENV = 'production'
+    }
+
     this.setConfig('local', config)
   }
 
