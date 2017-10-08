@@ -3,7 +3,7 @@
  */
 require('events').EventEmitter.prototype._maxListeners = 100
 const local = require('./config/local.js')
-const auth = require('./auth.js')
+const auth = require('./lib/auth.js')
 const CircularJSON = require('circular-json')
 const _ = require('lodash')
 const fork = require('child_process').fork
@@ -20,7 +20,7 @@ class Blitz {
     global.blitz = this
     blitz.config = {}
     blitz.nodes = {}
-    blitz.log = new(require('./config/logger.js'))()
+    blitz.log = new(require('./lib/logger.js'))()
 
     let config = {
       local: local,
