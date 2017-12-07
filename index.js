@@ -23,7 +23,7 @@ class Blitz {
     blitz.log = new(require('./lib/logger.js'))()
 
     let config = {
-      local: local,
+      local,
       provided: options
     }
 

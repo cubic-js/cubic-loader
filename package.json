@@ -20,6 +20,6 @@
     "keypair": "^1.0.1",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.31",
-    "rand-token": "^0.3.0"
+    "rand-token": "^0.4.0"
   }
 }
