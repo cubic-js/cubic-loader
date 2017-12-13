@@ -122,16 +122,17 @@ class Blitz {
       blitz.nodes[id] = {}
     }
 
-    // If master module -> have it spawn its slaves ()
+    // Verify RSA keys being set in config and manage user credentials
+    await auth.verify(node.constructor.name.toLowerCase(), id, node.config)
+    this.setConfig(id, node.config)
+
+    // Master (module entry point)
     if (node.config.local.master) {
-      this.setConfig(id, node.config)
       node.init()
     }
 
-    // Slave -> manage RSA keys and credentials, then launch
+    // Slave (api or core module)
     else {
-      await auth.verify(node.constructor.name.toLowerCase(), id, node.config)
-      this.setConfig(id, node.config)
       this.runHooks(id)
       this.cluster(node, id)
 
