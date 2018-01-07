@@ -112,6 +112,11 @@ class Blitz {
     let nid = node.config.provided ? node.config.provided.id : undefined
     let id = nid || node.constructor.name.toLowerCase()
 
+    // Ignore node if disabled
+    if (node.config.provided.disable) {
+      return
+    }
+
     // Property already set? Merge them.
     if (blitz.nodes[id]) {
       blitz.nodes[id] = _.merge(blitz.nodes[id], node)
