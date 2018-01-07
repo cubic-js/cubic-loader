@@ -179,17 +179,6 @@ class Blitz {
 
       // Make Worker methods accessible from global blitz
       this.exposeMethods(node, id)
-
-      // Kill host and all workers if one worker dies
-      // Processes may not quit properly otherwise
-      cluster.on('death', d => {
-        for (let node of blitz.nodes) {
-          node.workers.forEach(w => {
-            w.kill()
-          })
-        }
-        process.exit()
-      })
     }
   }
 
