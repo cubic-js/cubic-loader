@@ -6,7 +6,7 @@ const local = require('./config/local.js')
 const auth = require('./lib/auth.js')
 const CircularJSON = require('circular-json')
 const _ = require('lodash')
-const fork = require('child_process').fork
+const cluster = require('child_process')
 const epoch = new Date()
 
 /**
@@ -158,7 +158,7 @@ class Blitz {
     blitz.nodes[id].workers = []
     for (let i = 0; i < cores; i++) {
       // Add to node's worker list to be accessible globally
-      blitz.nodes[id].workers.push(fork(file, {
+      blitz.nodes[id].workers.push(cluster.fork(file, {
         env: {
           isWorker: true
         }
@@ -180,9 +180,15 @@ class Blitz {
       // Make Worker methods accessible from global blitz
       this.exposeMethods(node, id)
 
-      // Restart worker on exit
-      blitz.nodes[id].workers[i].on('death', () => {
-        blitz.nodes[id].workers.push(fork(file))
+      // Kill host and all workers if one worker dies
+      // Processes may not quit properly otherwise
+      cluster.on('death', d => {
+        for (let node of blitz.nodes) {
+          node.workers.forEach(w => {
+            w.kill()
+          })
+        }
+        process.exit()
       })
     }
   }
