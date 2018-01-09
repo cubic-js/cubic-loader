@@ -3,7 +3,6 @@
  */
 require('events').EventEmitter.prototype._maxListeners = 100
 const local = require('./config/local.js')
-const auth = require('./lib/auth.js')
 const CircularJSON = require('circular-json')
 const _ = require('lodash')
 const cluster = require('child_process')
@@ -29,6 +28,9 @@ class Blitz {
 
     if (config.provided.environment === 'production') {
       process.env.NODE_ENV = 'production'
+    }
+    if (!config.provided.skipAuthCheck) {
+      this.auth = require('./lib/auth.js')
     }
 
     this.setConfig('local', config)
@@ -128,7 +130,9 @@ class Blitz {
     }
 
     // Verify RSA keys being set in config and manage user credentials
-    await auth.verify(node.constructor.name.toLowerCase(), id, node.config)
+    if (!blitz.config.local.skipAuthCheck) {
+      await this.auth.verify(node.constructor.name.toLowerCase(), id, node.config)
+    }
     this.setConfig(id, node.config)
 
     // Master (module entry point)
