@@ -112,7 +112,8 @@ class Blitz {
    */
   async use(node) {
     let nid = node.config.provided ? node.config.provided.id : undefined
-    let id = nid || node.constructor.name.toLowerCase()
+    let type = node.constructor.name.toLowerCase()
+    let id = nid || type
 
     // Ignore node if disabled
     if (node.config.provided.disable) {
@@ -131,7 +132,7 @@ class Blitz {
 
     // Verify RSA keys being set in config and manage user credentials
     if (!blitz.config.local.skipAuthCheck) {
-      await this.auth.verify(node.constructor.name.toLowerCase(), id, node.config)
+      await this.auth.verify(type, id, node.config)
     }
     this.setConfig(id, node.config)
 
