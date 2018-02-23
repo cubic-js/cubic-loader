@@ -8,7 +8,7 @@ module.exports = {
   /**
    * Logger options
    */
-  logLevel: 'info',
+  logLevel: 'verbose',
 
   /**
    * Security settings
