@@ -1,6 +1,6 @@
 {
   "name": "blitz-js-loader",
-  "version": "0.5.16",
+  "version": "1.0.0",
   "description": "Module loader for the blitz-js framework",
   "main": "index.js",
   "repository": {
