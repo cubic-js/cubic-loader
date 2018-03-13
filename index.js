@@ -29,6 +29,7 @@ class Blitz {
     if (config.provided.environment === 'production') {
       process.env.NODE_ENV = 'production'
       config.local.logLevel = 'monitor'
+      config.local.skipAuthCheck = true
     }
     if (!config.provided.skipAuthCheck) {
       this.auth = require('./lib/auth.js')
