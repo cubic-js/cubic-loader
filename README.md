@@ -1,14 +1,17 @@
-# blitz-js-loader
+[![blitz-js-loader](https://i.imgur.com/fDCaNJu.png)](https://github.com/nexus-devs/blitz-js-loader)
+
+##
+
+<p align='center'>Loader for <a href='https://github.com/nexus-devs/blitz-js'>blitz-js</a> nodes. The 'magic' behind the framework.</p>
 
 <br>
+<br>
 
-## Example
+## Usage
 
 ```javascript
-require("blitz-js-loader")()
-
-const Auth = require("blitz-js-auth")
-blitz.use(new Auth()) // Authentication server which generates user tokens
+const loader = require('blitz-js-loader')
+loader(options) // Generates a global `blitz` object
 
 const API = require("blitz-js-api")
 blitz.use(new API()) // Public api node which will get data from the resource node below
@@ -16,7 +19,14 @@ blitz.use(new API()) // Public api node which will get data from the resource no
 const Core = require("blitz-js-core")
 blitz.use(new Core()) // Resource node which processes your application logic
 ```
-Now visit `localhost:3010/foo` to get your `bar`.
+This will load an API and Core node to the global blitz object. The nodes can
+be accessed via `blitz.nodes.api` and `blitz.nodes.core`. Each node's final
+config (i.e. provided options merged with defaults) is accessible via
+`blitz.config.<node>`.
+
+If we wish to use multiple API/Core nodes for different purposes, we can pass
+a group like `{ group: 'analytics' }` to the node constructors, making nodes
+accessible via `blitz.nodes.analytics.api` and vice-versa for node configs.
 
 <br>
 
