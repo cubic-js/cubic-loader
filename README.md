@@ -11,11 +11,13 @@
 
 ```javascript
 const loader = require('blitz-js-loader')
+const Auth = require('blitz-js-auth')
 const API = require('blitz-js-api')
 const Core = require('blitz-js-core')
 
 loader(options) // Generates a global `blitz` object
 
+blitz.use(new Auth()) // Auth server required to authorize the core node to respond to API requests
 blitz.use(new API())  // Web API serving requests from core node below
 blitz.use(new Core()) // Core node handling all API endpoints
 ```
