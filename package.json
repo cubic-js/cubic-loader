@@ -1,11 +1,11 @@
 {
-  "name": "blitz-js-loader",
-  "version": "1.0.4",
-  "description": "Module loader for the blitz-js framework",
+  "name": "cubic-loader",
+  "version": "1.0.0",
+  "description": "Loader for cubic nodes.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nexus-devs/blitz-js-loader"
+    "url": "https://github.com/nexus-devs/cubic-loader"
   },
   "scripts": {
     "start": "node ./index.js"

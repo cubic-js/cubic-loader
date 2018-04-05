@@ -1,8 +1,8 @@
-[![blitz-js-loader](https://i.imgur.com/fDCaNJu.png)](https://github.com/nexus-devs/blitz-js-loader)
+[![cubic-loader](https://i.imgur.com/WmDobC0.png)](https://github.com/nexus-devs/cubic-loader)
 
 ##
 
-<p align='center'>Loader for <a href='https://github.com/nexus-devs/blitz-js'>blitz-js</a> nodes. The 'magic' behind the framework.</p>
+<p align='center'>Loader for <a href='https://github.com/nexus-devs/cubic'>cubic</a> nodes. The 'magic' behind the framework.</p>
 
 <br>
 <br>
@@ -10,49 +10,49 @@
 ## Usage
 
 ```javascript
-const loader = require('blitz-js-loader')
-const Auth = require('blitz-js-auth')
-const API = require('blitz-js-api')
-const Core = require('blitz-js-core')
+const loader = require('cubic-loader')
+const Auth = require('cubic-auth')
+const API = require('cubic-api')
+const Core = require('cubic-core')
 
-loader(options) // Generates a global `blitz` object
+loader(options) // Generates a global `cubic` object
 
-blitz.use(new Auth()) // Auth server required to authorize the core node to respond to API requests
-blitz.use(new API())  // Web API serving requests from core node below
-blitz.use(new Core()) // Core node handling all API endpoints
+cubic.use(new Auth()) // Auth server required to authorize the core node to respond to API requests
+cubic.use(new API())  // Web API serving requests from core node below
+cubic.use(new Core()) // Core node handling all API endpoints
 ```
-This will load an API and Core node to the global blitz object. The nodes can
-be accessed via `blitz.nodes.api` and `blitz.nodes.core`. Each node's final
+This will load an API and Core node to the global cubic object. The nodes can
+be accessed via `cubic.nodes.api` and `cubic.nodes.core`. Each node's final
 config (i.e. provided options merged with defaults) is accessible via
-`blitz.config[node]`.
+`cubic.config[node]`.
 
 If we wish to use multiple API/Core nodes for different purposes, we can pass
 a group like `{ group: 'analytics' }` to the node constructors, making nodes
-accessible via `blitz.nodes.analytics.api` and vice-versa for node configs.
+accessible via `cubic.nodes.analytics.api` and vice-versa for node configs.
 
 <br>
 
 ## Hooks
-Hooks allow you to execute functions right before a certain node launches. Within the function, you'll have access to `blitz.config[node]` with all the options you've set in `blitz.use()`.
+Hooks allow you to execute functions right before a certain node launches. Within the function, you'll have access to `cubic.config[node]` with all the options you've set in `cubic.use()`.
 
 ### Example
 ```javascript
-require('blitz-js-loader')()
-const API = require('blitz-js-api')
+require('cubic-loader')()
+const API = require('cubic-api')
 
 const options = { ferret: 'tobi' }
-const hookFn = () => console.log(blitz.config.api.ferret)
+const hookFn = () => console.log(cubic.config.api.ferret)
 
-blitz.hook(API, hookFn) // Hooks function on provided node
-blitz.use(new API(options)) // logs 'tobi', before node is loaded
+cubic.hook(API, hookFn) // Hooks function on provided node
+cubic.use(new API(options)) // logs 'tobi', before node is loaded
 ```
-The stack of hook functions will be saved in `blitz.hooks[node]`.
+The stack of hook functions will be saved in `cubic.hooks[node]`.
 
 <br>
 
 ## Options
 ```javascript
-require('blitz-js-loader')({ key: value })
+require('cubic-loader')({ key: value })
 ```
 
 | Key           | Value         | Description   |
@@ -64,17 +64,17 @@ require('blitz-js-loader')({ key: value })
 | logLevel      | verbose       | Verbose log level. Includes Request Timestamps, Socket Connections, Config events, etc. |
 | logLevel      | silly         | Silly log level. Includes internal information on which routes are being bound, diagnostics and lifecycle details. |
 
-Configuration settings will be accessible via `blitz.config.local`. For configuration of individual nodes, check out their repositories below.
+Configuration settings will be accessible via `cubic.config.local`. For configuration of individual nodes, check out their repositories below.
 
 <br>
 
 ## Available Nodes
 | RepositoryLink          | Description   |
 |:------------- |:------------- |
-| [blitz-js-api](https://github.com/nexus-devs/blitz-js-api) | RESTful API with WebSocket support which authorizes and distributes requests to the resource node. |
-| [blitz-js-core](https://github.com/nexus-devs/blitz-js-core) | Resource Server for simple endpoint implementation to the API node. |
-| [blitz-js-auth](https://github.com/nexus-devs/blitz-js-auth) | Authentication Server for creating users and providing JSON Web Tokens to grant authorization on the API node.
-| [blitz-js-view](https://github.com/nexus-devs/blitz-js-view) | View node for rendering web pages.
+| [cubic-api](https://github.com/nexus-devs/cubic-api) | RESTful API with WebSocket support which authorizes and distributes requests to core nodes. |
+| [cubic-core](https://github.com/nexus-devs/cubic-core) | Resource Server for simple endpoint implementation to the API node. |
+| [cubic-auth](https://github.com/nexus-devs/cubic-auth) | Authentication Server for creating users and providing JSON Web Tokens to grant authorization on the API node.
+| [cubic-ui](https://github.com/nexus-devs/cubic-ui) | View node for rendering web pages.
 
 <br>
 
