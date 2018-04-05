@@ -3,9 +3,9 @@ const _ = require('lodash')
 const launch = new Date()
 
 /**
- * cubic.js module builder
+ * Cubic module loader
  */
-class cubic {
+class Cubic {
   constructor(options) {
     global.cubic = this
     cubic.hooks = {}
@@ -163,5 +163,5 @@ class cubic {
  * Pass options to constructor on require
  */
 module.exports = (options) => {
-  return new cubic(options)
+  return new Cubic(options)
 }
