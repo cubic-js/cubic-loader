@@ -116,7 +116,7 @@ class Cubic {
 
     // Verify RSA keys being set in config and manage user credentials
     if (!cubic.config.local.skipAuthCheck) {
-      await this.auth.verify(id, node.config)
+      node.config = await this.auth.verify(id, node.config)
     }
 
     // Only set initial config when no group is specified; group will already
