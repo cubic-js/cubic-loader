@@ -6,12 +6,12 @@ const launch = new Date()
  * Cubic module loader
  */
 class Cubic {
-  constructor(options) {
+  constructor (options) {
     global.cubic = this
     cubic.hooks = {}
     cubic.config = {}
     cubic.nodes = {}
-    cubic.log = new(require('./lib/logger.js'))()
+    cubic.log = new (require('./lib/logger.js'))()
 
     // Set up error handlers
     process.on('uncaughtException', err => {
@@ -40,7 +40,7 @@ class Cubic {
   /**
    * Attach module config to global cubic object
    */
-  setConfig(id, config) {
+  setConfig (id, config) {
     const merged = this.getConfig(config)
     cubic.config[id] = {}
 
@@ -53,7 +53,7 @@ class Cubic {
   /**
    * Merge default config with provided options
    */
-  getConfig(config) {
+  getConfig (config) {
     let local = _.cloneDeep(config.local) // merge seems to mutate original
     return _.merge(local, config.provided)
   }
@@ -61,7 +61,7 @@ class Cubic {
   /**
    * Throw errors only in development or if the error occured pre-boot
    */
-  throwSafely(err) {
+  throwSafely (err) {
     if (cubic.config.local.environment.toLowerCase() === 'production') {
       console.error(err)
     } else {
@@ -73,7 +73,7 @@ class Cubic {
    * Hook functions to be executed before specific node is initialized while
    * making node config available to the Hook
    */
-  hook(node, fn) {
+  hook (node, fn) {
     let id = typeof node === 'string' ? node : node.name.toLowerCase()
     let hooks = _.get(cubic.hooks, id)
 
@@ -90,7 +90,7 @@ class Cubic {
   /**
    * Execute hooks for specific node
    */
-  async runHooks(id) {
+  async runHooks (id) {
     let hooks = _.get(cubic.hooks, id)
 
     if (hooks) {
@@ -105,7 +105,7 @@ class Cubic {
   /**
    * Let cubic handle framework modules
    */
-  async use(node) {
+  async use (node) {
     let id = node.constructor.name.toLowerCase() // Class name of entrypoint
     let group = node.config.provided.group
 
