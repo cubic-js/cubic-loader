@@ -1,6 +1,6 @@
 {
   "name": "cubic-loader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Loader for cubic nodes.",
   "main": "index.js",
   "repository": {
