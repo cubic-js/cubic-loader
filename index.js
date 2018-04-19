@@ -61,7 +61,8 @@ class Cubic {
    * Throw errors only in development or if the error occured pre-boot
    */
   throwSafely (err) {
-    if (cubic.config.local.environment.toLowerCase() === 'production') {
+    if (cubic.config.local.environment.toLowerCase() === 'production' &&
+        cubic.config.local.throwErrors === false) {
       console.error(err)
     } else {
       throw err

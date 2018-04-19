@@ -9,6 +9,7 @@ module.exports = {
    * Logger options
    */
   logLevel: 'info',
+  throwErrors: false,
 
   /**
    * Security settings

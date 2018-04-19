@@ -67,6 +67,7 @@ require('cubic-loader')({ key: value })
 | logLevel      | error         | Error Log Level. Helpful for automated tests. |
 | logLevel      | verbose       | Verbose log level. Includes Request Timestamps, Socket Connections, Config events, etc. |
 | logLevel      | silly         | Silly log level. Includes internal information on which routes are being bound, diagnostics and lifecycle details. |
+| throwErrors   | false         | Throw errros while in production. `console.error()`'s them by default otherwise.
 
 Configuration settings will be accessible via `cubic.config.local`. For configuration of individual nodes, check out their repositories below.
 
