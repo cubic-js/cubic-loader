@@ -139,7 +139,7 @@ class Cubic {
     // empty object for other nodes to attach to
     if (id !== 'api' && id !== 'core') {
       cubic.nodes[id] = {}
-      node.init()
+      await node.init()
     }
     // Actual node (cubic-core or cubic-api)
     else {
