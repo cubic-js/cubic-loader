@@ -61,7 +61,8 @@ class Cubic {
    * Throw errors only in development or if the error occured pre-boot
    */
   throwSafely (err) {
-    if (cubic.config.local.environment.toLowerCase() === 'production') {
+    if (cubic.config.local.environment.toLowerCase() === 'production' &&
+        cubic.config.local.throwErrors === false) {
       console.error(err)
     } else {
       throw err
@@ -146,10 +147,10 @@ class Cubic {
       if (group) {
         cubic.nodes[group] = cubic.nodes[group] || {}
         cubic.nodes[group][id] = node
-        cubic.nodes[group][id].init()
+        await cubic.nodes[group][id].init()
       } else {
         cubic.nodes[id] = node
-        cubic.nodes[id].init()
+        await cubic.nodes[id].init()
       }
       let name = group ? `${group} ${id}` : id
       let port = id === 'api' ? ` (Listening on :${node.config.provided.port || node.config.local.port})` : ''
