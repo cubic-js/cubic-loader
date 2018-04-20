@@ -147,10 +147,10 @@ class Cubic {
       if (group) {
         cubic.nodes[group] = cubic.nodes[group] || {}
         cubic.nodes[group][id] = node
-        cubic.nodes[group][id].init()
+        await cubic.nodes[group][id].init()
       } else {
         cubic.nodes[id] = node
-        cubic.nodes[id].init()
+        await cubic.nodes[id].init()
       }
       let name = group ? `${group} ${id}` : id
       let port = id === 'api' ? ` (Listening on :${node.config.provided.port || node.config.local.port})` : ''
