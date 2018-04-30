@@ -14,12 +14,8 @@ class Cubic {
     cubic.log = new (require('./lib/logger.js'))()
 
     // Set up error handlers
-    process.on('uncaughtException', err => {
-      this.throwSafely(err)
-    })
-    process.on('unhandledRejection', err => {
-      this.throwSafely(err)
-    })
+    process.on('uncaughtException', this.throwSafely)
+    process.on('unhandledRejection', this.throwSafely)
 
     // Set configuration
     let config = {
