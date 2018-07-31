@@ -18,7 +18,7 @@
     "chalk": "^2.4.1",
     "keypair": "^1.0.1",
     "lodash": "^4.17.10",
-    "mongodb": "^3.0.8",
+    "mongodb": "^3.1.1",
     "rand-token": "^0.4.0"
   },
   "devDependencies": {
@@ -26,13 +26,13 @@
     "cubic-auth": "1.1.0",
     "cubic-client": "1.1.2",
     "cubic-core": "1.1.3",
-    "eslint": "^5.0.0",
+    "eslint": "^5.2.0",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-node": "^7.0.0",
-    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
-    "mocha": "^5.1.1",
-    "semantic-release": "^15.4.1"
+    "mocha": "^5.2.0",
+    "semantic-release": "^15.9.2"
   }
 }
